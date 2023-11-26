@@ -10,6 +10,7 @@
     "lint:fix": "eslint --fix src"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
     "formik": "^2.4.5",
     "nanoid": "^5.0.1",
     "react": "^18.2.0",
