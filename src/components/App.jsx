@@ -3,6 +3,7 @@ import { AddContact } from './AddContact/AddContact';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 export const App = () => {
   const [contacts, setContacts] = useState([
@@ -12,7 +13,11 @@ export const App = () => {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
   const [filter, setFilter] = useState('');
-
+  // дані зі стора
+  const filterStatus = useSelector(state => state.filter);
+  const frends = useSelector(state => state.contacts);
+  console.log('filterststus', filterStatus, frends);
+  // кінець дані зі стора
   useEffect(() => {
     if (localStorage.getItem('contacts') !== null) {
       const savedSettings = localStorage.getItem('contacts');

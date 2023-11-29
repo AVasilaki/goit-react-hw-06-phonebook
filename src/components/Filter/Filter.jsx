@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 export const Filter = ({ handleFilter }) => {
   return (
     <div className='mb-2 mt-6  '>
-      <label className='text-lg grid'>
+      <label className='grid text-lg'>
         Find contacts by name
         <input
           type='text'
