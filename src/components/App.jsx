@@ -1,60 +1,62 @@
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { AddContact } from './AddContact/AddContact';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useEffect, useState } from 'react';
+// import { useSelector } from 'react-redux';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([
-    { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-    { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-    { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-    { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-  ]);
-  const [filter, setFilter] = useState('');
+  // const [contacts, setContacts] = useState([
+  //   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+  //   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+  //   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+  //   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+  // ]);
+  // const [filter, setFilter] = useState('');
+
   // дані зі стора
-  const filterStatus = useSelector(state => state.filter);
-  const frends = useSelector(state => state.contacts);
-  console.log('filterststus', filterStatus, frends);
+  // const filterStatus = useSelector(state => state.filter);
+  // const frends = useSelector(state => state.contacts);
+  // console.log('filterststus', filterStatus, frends);
   // кінець дані зі стора
-  useEffect(() => {
-    if (localStorage.getItem('contacts') !== null) {
-      const savedSettings = localStorage.getItem('contacts');
-      const parsedSettings = JSON.parse(savedSettings);
-      console.log(parsedSettings);
-      setContacts(parsedSettings);
-    }
-  }, []);
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   if (localStorage.getItem('contacts') !== null) {
+  //     const savedSettings = localStorage.getItem('contacts');
+  //     const parsedSettings = JSON.parse(savedSettings);
+  //     console.log(parsedSettings);
+  //     setContacts(parsedSettings);
+  //   }
+  // }, []);
 
-  const handleFilter = evt => {
-    setFilter(evt.target.value);
-  };
-  const handleAddContact = newContact => {
-    if (contacts.find(contact => contact.name === newContact.name)) {
-      alert(`${newContact.name} is already in contacts.`);
-      return;
-    }
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-    setContacts(prevState => [...prevState, { ...newContact, id: nanoid() }]);
-  };
+  // const handleFilter = evt => {
+  //   setFilter(evt.target.value);
+  // };
+  // const handleAddContact = newContact => {
+  //   if (contacts.find(contact => contact.name === newContact.name)) {
+  //     alert(`${newContact.name} is already in contacts.`);
+  //     return;
+  //   }
 
-  const onRemoveContact = id => {
-    setContacts(contacts.filter(contact => contact.id !== id));
-  };
+  //   setContacts(prevState => [...prevState, { ...newContact, id: nanoid() }]);
+  // };
 
-  const filtredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().trim().includes(filter.toLowerCase().trim())
-  );
+  // const onRemoveContact = id => {
+  //   setContacts(contacts.filter(contact => contact.id !== id));
+  // };
+
+  // const filtredContacts = contacts.filter(contact =>
+  //   contact.name.toLowerCase().trim().includes(filter.toLowerCase().trim())
+  // );
   return (
     <>
-      <AddContact addNewContact={handleAddContact}></AddContact>
-      <Filter handleFilter={handleFilter}></Filter>
-      <Contacts contacts={filtredContacts} onRemoveContact={onRemoveContact}></Contacts>
+      <AddContact></AddContact>
+      <Filter></Filter>
+      <Contacts></Contacts>
     </>
   );
 };
