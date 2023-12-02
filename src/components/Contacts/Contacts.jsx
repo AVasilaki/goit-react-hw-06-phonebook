@@ -11,7 +11,7 @@ export const Contacts = () => {
   const filtredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().trim().includes(filter.toLowerCase().trim())
   );
-  console.log('contacts', filtredContacts);
+  console.log('contacts', contacts);
   const dispatch = useDispatch();
   // console.log('dispatch', dispatch, 'deletcontact', deleteContact);
   const handleDeletContact = id => {
