@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { deleteContact } from '../../redux/actions';
+import { deleteContact } from '../../redux/contactsSlice';
 
 export const Contacts = () => {
   // дані зі стора
@@ -15,6 +15,7 @@ export const Contacts = () => {
   const dispatch = useDispatch();
   // console.log('dispatch', dispatch, 'deletcontact', deleteContact);
   const handleDeletContact = id => {
+    console.log(id);
     dispatch(deleteContact(id));
   };
   // console.log(handleDeletContact);

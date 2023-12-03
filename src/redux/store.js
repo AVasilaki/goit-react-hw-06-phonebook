@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 // import { devToolsEnhancer } from '@redux-devtools/extension';
-import { contactsReducer, filterReducer } from './reducer';
+// import { contactsReducer, filterReducer } from './reducer';
+import { contactsReducer } from './contactsSlice';
+import { filterReducer } from './filterSlice';
 
 // const initialState = {
 //   contacts: [
@@ -22,4 +24,4 @@ export const store = configureStore({
     filter: filterReducer,
   },
 });
-console.log(store, 'store');
+// console.log(store, 'store');
