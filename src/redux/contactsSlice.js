@@ -28,18 +28,10 @@ export const contactsSlice = createSlice({
     },
     deleteContact: {
       reducer(state, action) {
-        // console.log(state, action);
-        // state.filter(contact => contact.id !== action.payload);
         const index = state.findIndex(task => task.id === action.payload);
         state.splice(index, 1);
       },
     },
-    // addContact(state, action) {
-    //   state.push(action.payload);
-    // },
-    // deleteContact(state, action) {
-    //   state.filter(contact => contact.id !== action.payload);
-    // },
   },
 });
 

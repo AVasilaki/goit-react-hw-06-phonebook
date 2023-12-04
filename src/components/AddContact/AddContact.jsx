@@ -1,38 +1,28 @@
 import PropTypes from 'prop-types';
-// import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contactsSlice';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 export const AddContact = () => {
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
-  // Отримуємо посилання на функцію відправки екшенів
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
-  // const onChangeName = evt => {
-  //   setName(evt.target.value);
-  // };
-  // const onChangeNumber = evt => {
-  //   setNumber(evt.target.value);
-  // };
+
   const onSubmit = evt => {
     evt.preventDefault();
 
     const form = evt.currentTarget;
     const name1 = form.elements.name.value;
     const number1 = form.elements.number.value;
-    if (contacts.find(contact => contact.name === name1)) {
+    if (
+      contacts.find(contact => contact.name.toLowerCase().trim() === name1.toLowerCase().trim())
+    ) {
       alert(`${name1} is already in contacts.`);
       form.reset();
       return;
     }
-    console.log('form', form, name1, number1);
-    // Викликаємо генератор екшену та передаємо ім'я та номер телефону для поля payload
-    // Відправляємо результат – екшен створення контакту
+
     dispatch(addContact(name1, number1));
 
-    // addNewContact({ name: name, number: number });
     evt.target.reset();
   };
 
@@ -45,7 +35,6 @@ export const AddContact = () => {
           type='text'
           name='name'
           required
-          // onChange={onChangeName}
           pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           className='ml-6 rounded-lg bg-blue-500 px-2 text-white'
         />
@@ -56,7 +45,6 @@ export const AddContact = () => {
           type='tel'
           name='number'
           required
-          // onChange={onChangeNumber}
           pattern='^[ 0-9]+$'
           className='ml-2 rounded-lg bg-blue-500 px-2 text-white'
         />

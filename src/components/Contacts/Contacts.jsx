@@ -4,22 +4,19 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { deleteContact } from '../../redux/contactsSlice';
 
 export const Contacts = () => {
-  // дані зі стора
+  
   const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
-  console.log(filter, contacts, 'filter');
   const filtredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().trim().includes(filter.value.toLowerCase().trim())
   );
-  console.log('contacts', contacts);
+
   const dispatch = useDispatch();
-  // console.log('dispatch', dispatch, 'deletcontact', deleteContact);
+
   const handleDeletContact = id => {
-    console.log(id);
     dispatch(deleteContact(id));
   };
-  // console.log(handleDeletContact);
-  // кінець дані зі стора
+
   return (
     <>
       <h2 className=' mb-4 text-3xl'>Contacts:</h2>

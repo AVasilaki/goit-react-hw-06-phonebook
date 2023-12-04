@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux';
 import { setStatusFilter } from '../../redux/filterSlice';
 
 export const Filter = () => {
-  // redux
+  
   const dispatch = useDispatch();
   const handleFilter1 = evt => {
     dispatch(setStatusFilter(evt.target.value));
-    console.log(evt.target.value);
+    
   };
-  console.log(handleFilter1, 'hf');
-  // end redux
+  
+
   return (
     <div className='mb-2 mt-6  '>
       <label className='grid text-lg'>
