@@ -7,9 +7,9 @@ export const Contacts = () => {
   // дані зі стора
   const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
-  console.log(filter, 'filter');
+  console.log(filter, contacts, 'filter');
   const filtredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().trim().includes(filter.toLowerCase().trim())
+    contact.name.toLowerCase().trim().includes(filter.value.toLowerCase().trim())
   );
   console.log('contacts', contacts);
   const dispatch = useDispatch();

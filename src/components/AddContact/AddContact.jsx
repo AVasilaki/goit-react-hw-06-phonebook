@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 // import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contactsSlice';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 export const AddContact = () => {
   // const [name, setName] = useState('');
   // const [number, setNumber] = useState('');
   // Отримуємо посилання на функцію відправки екшенів
   const dispatch = useDispatch();
-
+  const contacts = useSelector(state => state.contacts);
   // const onChangeName = evt => {
   //   setName(evt.target.value);
   // };
@@ -17,9 +18,15 @@ export const AddContact = () => {
   // };
   const onSubmit = evt => {
     evt.preventDefault();
+
     const form = evt.currentTarget;
     const name1 = form.elements.name.value;
     const number1 = form.elements.number.value;
+    if (contacts.find(contact => contact.name === name1)) {
+      alert(`${name1} is already in contacts.`);
+      form.reset();
+      return;
+    }
     console.log('form', form, name1, number1);
     // Викликаємо генератор екшену та передаємо ім'я та номер телефону для поля payload
     // Відправляємо результат – екшен створення контакту
